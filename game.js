@@ -62,12 +62,14 @@ export function buildGame({ $board, $keyboard }) {
     if (guess === answer) {
       withTranstion(() => alert('You won!'))
       $keyboard.disable()
+      navigator.clipboard.writeText($board.read())
       return
     }
 
     if (row === 5) {
-      withTranstion(() => alert(`You lost! The answer was ${answer}`))
+      withTranstion(() => alert(`You lost! The answer was ${answer}.`))
       $keyboard.disable()
+      navigator.clipboard.writeText($board.read())
       return
     }
 

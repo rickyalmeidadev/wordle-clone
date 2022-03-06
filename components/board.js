@@ -56,5 +56,43 @@ export function createBoard({ columns = 5, rows = 6 } = {}) {
     }
   }
 
+  $board.read = () => {
+    const $rows = Array.from($board.querySelectorAll('.board__row'))
+
+    let board = 'https://rickyalmeidadev-wordle.netlify.app/\n\n'
+    let done = false
+
+    $rows.forEach($row => {
+      if (done) {
+        return
+      }
+
+      const $columns = Array.from($row.querySelectorAll('.board__column'))
+
+      $columns.forEach($column => {
+        if ($column.classList.contains('board__column--correct')) {
+          board += '🟩'
+          return
+        }
+
+        if ($column.classList.contains('board__column--present')) {
+          board += '🟨'
+          return
+        }
+
+        if ($column.classList.contains('board__column--absent')) {
+          board += '⬛'
+          return
+        }
+
+        done = true
+      })
+
+      board += '\n'
+    })
+
+    return board
+  }
+
   return $board
 }
