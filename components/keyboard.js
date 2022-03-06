@@ -1,4 +1,4 @@
-import { uuid } from '../utils/uuid.js'
+import { v4 as uuid } from 'https://jspm.dev/uuid'
 
 export function createKeyboard() {
   const ID = uuid()
