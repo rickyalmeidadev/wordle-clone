@@ -23,6 +23,10 @@ function check(answer, guess) {
   return result
 }
 
+function withTranstion(callback) {
+  setTimeout(callback, 150)
+}
+
 export function buildGame({ $board, $keyboard }) {
   const today = new Date()
   const index = today.getDate() + today.getMonth()
@@ -54,13 +58,14 @@ export function buildGame({ $board, $keyboard }) {
     $keyboard.keys(keys).paint(diff)
 
     if (guess === answer) {
-      alert('You win!')
+      withTranstion(() => alert('You win!'))
       $keyboard.disable()
       return
     }
 
     if (row === 5) {
-      alert(`You lost! The answer was ${answer}`)
+      withTranstion(() => alert(`You lost! The answer was ${answer}`))
+      $keyboard.disable()
       return
     }
 
