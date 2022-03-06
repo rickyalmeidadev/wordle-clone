@@ -37,7 +37,7 @@ body {
 
 .board {
   width: 100%;
-  max-width: 32rem;
+  max-width: 28rem;
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -87,14 +87,14 @@ body {
   align-self: center;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.6rem;
 }
 
 .keyboard__row {
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 0.8rem;
+  gap: 0.6rem;
 }
 
 .keyboard__key {
@@ -103,7 +103,7 @@ body {
   text-transform: uppercase;
   border-radius: 0.8rem;
   background-color: #d3d6da;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: #1a1a1a;
   display: flex;
   flex: 1;
