@@ -58,7 +58,7 @@ export function buildGame({ $board, $keyboard }) {
     $keyboard.keys(keys).paint(diff)
 
     if (guess === answer) {
-      withTranstion(() => alert('You win!'))
+      withTranstion(() => alert('You won!'))
       $keyboard.disable()
       return
     }

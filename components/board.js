@@ -1,4 +1,4 @@
-import { uuid } from './utils/uuid.js'
+import { uuid } from '../utils/uuid.js'
 
 export function createBoard({ columns = 5, rows = 6 } = {}) {
   const ID = uuid()
