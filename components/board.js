@@ -59,7 +59,7 @@ export function createBoard({ columns = 5, rows = 6 } = {}) {
   $board.read = () => {
     const $rows = Array.from($board.querySelectorAll('.board__row'))
 
-    let board = 'https://rickyalmeidadev-wordle.netlify.app/\n\n'
+    let board = 'Have a go: https://bit.ly/3pC5xzq\n\n'
     let done = false
 
     $rows.forEach($row => {
