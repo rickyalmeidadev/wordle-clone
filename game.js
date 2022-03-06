@@ -1,12 +1,7 @@
 import { words } from './utils/words.js'
 
-async function validate(guess) {
-  if (guess.length == !5) {
-    return false
-  }
-
-  const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess}`)
-  return response.ok
+function validate(guess) {
+  return words.includes(guess)
 }
 
 function check(answer, guess) {
@@ -48,9 +43,10 @@ export function buildGame({ $board, $keyboard }) {
     const keys = guess.split('')
     const diff = check(answer, guess)
 
-    const isValid = await validate(guess)
+    const isValid = validate(guess)
 
     if (!isValid) {
+      alert('Not in word list')
       return
     }
 
@@ -58,11 +54,13 @@ export function buildGame({ $board, $keyboard }) {
     $keyboard.keys(keys).paint(diff)
 
     if (guess === answer) {
+      alert('You win!')
       $keyboard.disable()
       return
     }
 
     if (row === 5) {
+      alert(`You lost! The answer was ${answer}`)
       return
     }
 
