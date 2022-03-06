@@ -101,7 +101,7 @@ body {
   height: 4rem;
   cursor: pointer;
   text-transform: uppercase;
-  border-radius: 0.8rem;
+  border-radius: 0.4rem;
   background-color: #d3d6da;
   font-size: 1.4rem;
   color: #1a1a1a;
@@ -131,7 +131,7 @@ body {
   height: 4rem;
   cursor: pointer;
   text-transform: uppercase;
-  border-radius: 0.8rem;
+  border-radius: 0.4rem;
   background-color: #d3d6da;
   font-size: 1.2rem;
   color: #1a1a1a;

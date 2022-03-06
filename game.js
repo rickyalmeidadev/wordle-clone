@@ -12,6 +12,7 @@ function check(answer, guess) {
       result.push('correct')
       continue
     }
+
     if (answer.includes(guess[i])) {
       result.push('present')
       continue
