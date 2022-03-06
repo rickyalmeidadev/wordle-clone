@@ -1,4 +1,4 @@
-import { uuid } from './uuid.js'
+import { uuid } from './utils/uuid.js'
 
 export function createKeyboard() {
   const ID = uuid()
