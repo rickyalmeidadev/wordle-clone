@@ -1,5 +1,12 @@
-function isValid(guess) {
-  return guess.length === 5
+import { words } from './utils/words.js'
+
+async function validate(guess) {
+  if (guess.length == !5) {
+    return false
+  }
+
+  const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess}`)
+  return response.ok
 }
 
 function check(answer, guess) {
@@ -22,7 +29,10 @@ function check(answer, guess) {
 }
 
 export function buildGame({ $board, $keyboard }) {
-  let answer = 'react'
+  const today = new Date()
+  const index = today.getDate() + today.getMonth()
+  const answer = words[index]
+
   let row = 0
 
   $keyboard.on('key', key => {
@@ -33,12 +43,14 @@ export function buildGame({ $board, $keyboard }) {
     $board.row(row).erase()
   })
 
-  $keyboard.on('enter', () => {
+  $keyboard.on('enter', async () => {
     const guess = $board.row(row).read()
     const keys = guess.split('')
     const diff = check(answer, guess)
 
-    if (!isValid(guess)) {
+    const isValid = await validate(guess)
+
+    if (!isValid) {
       return
     }
 
