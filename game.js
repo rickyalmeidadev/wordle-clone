@@ -5,20 +5,21 @@ function validate(guess) {
 }
 
 function check(answer, guess) {
-  let result = []
+  const result = Array.from({ length: answer.length }).fill('absent')
+  const whitelist = answer.split('')
 
-  for (let i = 0; i < guess.length; i++) {
-    if (answer[i] === guess[i]) {
-      result.push('correct')
-      continue
+  for (let i = 0; i < answer.length; i++) {
+    if (whitelist[i] === guess[i]) {
+      result[i] = 'correct'
+      whitelist[i] = '_'
     }
+  }
 
-    if (answer.includes(guess[i])) {
-      result.push('present')
-      continue
+  for (let i = 0; i < answer.length; i++) {
+    if (whitelist.includes(guess[i])) {
+      result[i] = 'present'
+      whitelist[i] = '_'
     }
-
-    result.push('absent')
   }
 
   return result
