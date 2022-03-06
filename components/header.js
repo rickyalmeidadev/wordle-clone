@@ -6,7 +6,7 @@ export function createHeader() {
   const $title = document.createElement('h1')
   $title.id = 'title'
   $title.classList.add('header__title')
-  $title.textContent = 'Wordle'
+  $title.textContent = 'My Wordle Clone'
   $header.appendChild($title)
 
   return $header
