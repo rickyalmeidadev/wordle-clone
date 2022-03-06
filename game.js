@@ -2,7 +2,7 @@ function isValid(guess) {
   return guess.length === 5
 }
 
-function diff(answer, guess) {
+function check(answer, guess) {
   let result = []
 
   for (let i = 0; i < guess.length; i++) {
@@ -35,12 +35,15 @@ export function buildGame({ $board, $keyboard }) {
 
   $keyboard.on('enter', () => {
     const guess = $board.row(row).read()
+    const keys = guess.split('')
+    const diff = check(answer, guess)
 
     if (!isValid(guess)) {
       return
     }
 
-    $board.row(row).paint(diff(answer, guess))
+    $board.row(row).paint(diff)
+    $keyboard.keys(keys).paint(diff)
 
     if (guess === answer) {
       $keyboard.disable()

@@ -48,9 +48,9 @@ export function createBoard({ columns = 5, rows = 6 } = {}) {
           '',
         )
       },
-      paint: result => {
+      paint: diff => {
         $columns.forEach(($column, index) => {
-          $column.classList.add(result[index])
+          $column.classList.add(`board__column--${diff[index]}`)
         })
       },
     }

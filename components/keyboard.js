@@ -17,10 +17,11 @@ export function createKeyboard() {
     const row = rows[i]
 
     for (let j = 0; j < row.length; j++) {
+      const key = row[j]
       const $key = document.createElement('div')
-      $key.id = `keyboard-key-${ID}-${i}-${j}`
+      $key.id = `keyboard-key-${key}-${ID}`
       $key.classList.add('keyboard__key')
-      $key.textContent = row[j]
+      $key.textContent = key
       $row.appendChild($key)
     }
 
@@ -29,7 +30,6 @@ export function createKeyboard() {
 
     if (IS_MIDDLE_ROW) {
       const $spacer = document.createElement('div')
-      $spacer.id = `keyboard-spacer-${ID}-${i}`
       $spacer.classList.add('keyboard__spacer')
       $row.prepend($spacer)
       $row.appendChild($spacer.cloneNode(true))
@@ -111,6 +111,26 @@ export function createKeyboard() {
       document.addEventListener('keydown', handleKeyDown)
       events.push({ element: document, type: 'keydown', handler: handleKeyDown })
     }
+  }
+
+  $keyboard.keys = keys => {
+    const $keys = []
+    keys.forEach(key => {
+      const $key = $keyboard.querySelector(`#keyboard-key-${key}-${ID}`)
+      $keys.push($key)
+    })
+
+    $keys.paint = diff => {
+      $keys.forEach(($key, index) => {
+        if ($key.classList.contains('keyboard__key--correct')) {
+          return
+        }
+
+        $key.classList.add(`keyboard__key--${diff[index]}`)
+      })
+    }
+
+    return $keys
   }
 
   return $keyboard
